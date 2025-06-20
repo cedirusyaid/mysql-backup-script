@@ -24,8 +24,8 @@ rm -rf "$TEMP_DIR"
 mkdir -p "$TEMP_DIR"
 
 # Inisialisasi log Telegram (mode HTML)
-LOG="🛡️ <b>Backup MySQL Dimulai</b>
-🖥️ Host: <b>${HSTNAME}</b> (${LOCAL_IP})
+LOG="🛡️ <b>#BackupMySQL</b>
+🖥️ Host: <b>#${HSTNAME}</b> (${LOCAL_IP})
 🕒 Waktu: <b>${TIMESTAMP}</b>
 
 "
@@ -51,6 +51,10 @@ done
 tar -czf "$ARCHIVE" -C "$TEMP_DIR" .
 rm -rf "$TEMP_DIR"
 
+# Hitung ukuran file backup (dalam MB, 1 angka di belakang koma)
+ARCHIVE_SIZE=$(du -m "$ARCHIVE" | cut -f1)
+ARCHIVE_SIZE_HUMAN=$(du -h "$ARCHIVE" | cut -f1)
+
 # Kirim backup ke server via rsync
 if rsync -az -e "ssh -p ${SSH_PORT}" "$ARCHIVE" "${REMOTE_USER}@${REMOTE_HOST}:${REMOTE_PATH}"; then
   LOG+="
@@ -66,6 +70,7 @@ fi
 LOG+="
 📁 Arsip: <code>${ARCHIVE##*/}</code>
 📂 Lokal: <code>${BACKUP_DIR}</code>
+📦 Ukuran: <b>${ARCHIVE_SIZE_HUMAN}</b>
 🔢 Sukses: <b>${SUCCESS}</b> | Gagal: <b>${FAILED}</b>
 "
 

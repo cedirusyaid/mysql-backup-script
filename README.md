@@ -11,6 +11,7 @@ Script ini melakukan backup harian database MySQL, mengarsipkan dalam file `.tar
 * ✅ Kompresi hasil backup ke `.tar.gz`
 * ✅ Kirim via `rsync` menggunakan koneksi SSH tanpa password
 * ✅ Kirim laporan hasil backup ke Telegram (parse\_mode: HTML)
+* ✅ Menampilkan ukuran file backup di laporan Telegram
 
 ---
 
@@ -89,8 +90,8 @@ chmod +x backup_script.sh
 ## 🧾 Contoh Log Telegram
 
 ```
-🔡️ Backup MySQL Dimulai
-📥 Host: cd-nt (192.168.1.14)
+🛡️ Backup MySQL Dimulai
+🖥️ Host: cd-nt (192.168.1.14)
 🕒 Waktu: 2025-06-20 19:44:01
 
 ✅ simkom_db berhasil dibackup
@@ -101,6 +102,7 @@ chmod +x backup_script.sh
 
 📁 Arsip: cd-nt_mysql_backup_2025-06-20.tar.gz
 📂 Lokal: /data/backup/mysql-local
+📦 Ukuran: 1.2 MB
 🔢 Sukses: 3 | Gagal: 0
 ```
 
@@ -113,3 +115,13 @@ chmod +x backup_script.sh
   * `cd-nt_mysql_backup_2025-06-20.tar.gz` ← File hasil backup hari ini
 
 ---
+
+## 🤝 Kontribusi
+
+Script ini dapat dikembangkan untuk:
+
+* Upload file langsung ke Telegram
+* Backup semua database secara otomatis
+* Backup ke beberapa server sekaligus
+
+Pull Request dan ide sangat diterima!
