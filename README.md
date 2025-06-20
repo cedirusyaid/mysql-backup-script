@@ -31,6 +31,7 @@ MYSQL_DATABASES="simkom_db kinerja_db pasar_db"
 BACKUP_DIR=/data/backup/mysql-local
 
 # Server remote (via SSH)
+REMOTE_NAME=namaserver
 REMOTE_USER=backupuser
 REMOTE_HOST=backup.example.com
 REMOTE_PATH=/data/backup/server1

@@ -58,7 +58,7 @@ ARCHIVE_SIZE_HUMAN=$(du -h "$ARCHIVE" | cut -f1)
 # Kirim backup ke server via rsync
 if rsync -az -e "ssh -p ${SSH_PORT}" "$ARCHIVE" "${REMOTE_USER}@${REMOTE_HOST}:${REMOTE_PATH}"; then
   LOG+="
-📤 <b>Backup berhasil dikirim</b> ke server via rsync.
+📤 <b>Backup berhasil dikirim</b> ke server ${REMOTE_NAME} via rsync.
 "
 else
   LOG+="
