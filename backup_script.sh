@@ -1,13 +1,18 @@
 #!/bin/bash
 set -e
 
-# Load konfigurasi dari file .env
-if [ -f .env ]; then
-  source .env
+
+ENV_FILE="$(dirname "$0")/.env"
+if [ -f "$ENV_FILE" ]; then
+    source "$ENV_FILE"
 else
-  echo "❌ File .env tidak ditemukan!"
-  exit 1
+    echo "File .env tidak ditemukan!"
+    exit 1
 fi
+
+
+
+
 
 # Informasi sistem
 TIMESTAMP=$(date +'%Y-%m-%d %H:%M:%S')
